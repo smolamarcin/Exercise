@@ -8,11 +8,12 @@ import java.util.function.Function;
 public class FunctionTRExample {
     public static void main(String[] args) {
         Function<Employee, String> funcEmpToString = (Employee e) -> e.getName();
+        Function<String,String> initialFunction=(String s)->"For every name, sout this string :D!!!";
         List<Employee> employeeList = Arrays.asList(new Employee("Tom Jones", 45),
                 new Employee("Harry Major", 22),
                 new Employee("Marcin ", 23),
                 new Employee("Malgosia", 18));
-        List<String> empNameList = convertEmpListToNamesList(employeeList, funcEmpToString);
+        List<String> empNameList = convertEmpListToNamesList(employeeList, funcEmpToString.andThen(initialFunction));
         empNameList.forEach(System.out::println);
     }
 
